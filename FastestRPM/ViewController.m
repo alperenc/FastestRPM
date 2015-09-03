@@ -9,6 +9,11 @@
 #import "ViewController.h"
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UIView *needleContainerView;
+@property (weak, nonatomic) IBOutlet UILabel *highestVelocityLabel;
+
+@property (nonatomic) float velocity;
+@property (nonatomic) int highestVelocity;
 
 @end
 
@@ -16,12 +21,41 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    self.highestVelocity = 0;
+    
+    [self setNeedleToOriginalPosition];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)panGestureRecognized:(UIPanGestureRecognizer *)sender {
+    
+    if (sender.state == UIGestureRecognizerStateChanged) {
+        CGPoint velocityInCGPoint = [sender velocityInView:self.view];
+        
+        self.velocity = sqrtf(powf(velocityInCGPoint.x, 2) + powf(velocityInCGPoint.y, 2));
+        
+        float maxVelocity = 2000.0;
+        
+        self.needleContainerView.transform = CGAffineTransformMakeRotation( -1.25 * M_PI + (self.velocity / maxVelocity  * (270.0 / 360.0) * M_PI));
+        if (self.velocity > self.highestVelocity) {
+            self.highestVelocity = (int)self.velocity;
+        }
+        
+        if (self.velocity >= maxVelocity) {
+            self.needleContainerView.transform = CGAffineTransformMakeRotation(90.0 / 360.0 * M_PI);
+        }
+        
+    } else {
+        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.8f target:self selector:@selector(setNeedleToOriginalPosition) userInfo:nil repeats:NO];
+        
+    }
+    
+    self.highestVelocityLabel.text = [NSString stringWithFormat:@"Highest velocity is: %d", self.highestVelocity];
+}
+                          
+- (void)setNeedleToOriginalPosition {
+  self.needleContainerView.transform = CGAffineTransformMakeRotation(-1.25 * M_PI);
+    self.highestVelocityLabel.text = [NSString stringWithFormat:@"Highest velocity is: %d", self.highestVelocity];
 }
 
 @end

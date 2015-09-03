@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8187.4" systemVersion="15A263e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8151.3"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +17,74 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="speedometer" translatesAutoresizingMaskIntoConstraints="NO" id="06n-a1-HD1">
+                                <rect key="frame" x="150" y="150" width="300" height="300"/>
+                                <animations/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SKB-uz-8Ld">
+                                <rect key="frame" x="150" y="150" width="300" height="300"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="needle" translatesAutoresizingMaskIntoConstraints="NO" id="DBL-Te-WYC">
+                                        <rect key="frame" x="112" y="60" width="180" height="180"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="DBL-Te-WYC" secondAttribute="height" multiplier="1:1" id="MZq-uK-yMY"/>
+                                            <constraint firstAttribute="width" constant="180" id="jn7-6x-5dM"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="DBL-Te-WYC" firstAttribute="centerY" secondItem="SKB-uz-8Ld" secondAttribute="centerY" id="dNw-R1-Evi"/>
+                                    <constraint firstAttribute="trailing" secondItem="DBL-Te-WYC" secondAttribute="trailing" constant="8" id="uBk-vZ-bwT"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Highest Velocity: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="PbX-6v-UYF">
+                                <rect key="frame" x="20" y="458" width="560" height="36"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="PbX-6v-UYF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0R2-tm-gvD"/>
+                            <constraint firstItem="PbX-6v-UYF" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="91B-fY-79O"/>
+                            <constraint firstItem="SKB-uz-8Ld" firstAttribute="width" secondItem="06n-a1-HD1" secondAttribute="width" id="AfF-bp-gYw"/>
+                            <constraint firstItem="06n-a1-HD1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="HQj-tF-Dxr"/>
+                            <constraint firstItem="SKB-uz-8Ld" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Jgw-bw-Syp"/>
+                            <constraint firstItem="06n-a1-HD1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Qbd-Eu-p0f"/>
+                            <constraint firstItem="PbX-6v-UYF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Xq1-fL-cGY"/>
+                            <constraint firstItem="SKB-uz-8Ld" firstAttribute="height" secondItem="06n-a1-HD1" secondAttribute="height" id="gYx-hl-tnW"/>
+                            <constraint firstItem="PbX-6v-UYF" firstAttribute="top" secondItem="SKB-uz-8Ld" secondAttribute="bottom" constant="8" id="tuZ-Zo-UUB"/>
+                            <constraint firstItem="SKB-uz-8Ld" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="yrr-I3-bbR"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="8iM-tv-s7T" appends="YES" id="8iu-gc-hyK"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="highestVelocityLabel" destination="PbX-6v-UYF" id="ciS-pG-38D"/>
+                        <outlet property="needleContainerView" destination="SKB-uz-8Ld" id="2VX-0b-s60"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" maximumNumberOfTouches="1" id="8iM-tv-s7T">
+                    <connections>
+                        <action selector="panGestureRecognized:" destination="BYZ-38-t0r" id="9sr-eW-nUj"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
+            <point key="canvasLocation" x="165" y="136"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="needle" width="400" height="400"/>
+        <image name="speedometer" width="300" height="300"/>
+    </resources>
 </document>
